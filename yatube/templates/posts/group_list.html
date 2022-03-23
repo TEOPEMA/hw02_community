@@ -1,29 +1,28 @@
 {% extends "base.html" %}
 
-{% block title %}{{ title }}{% endblock %}
+{% block title %}{{ 'yatube' }}{% endblock %}
 
 {% block content %}
-      <!-- класс py-5 создает отступы сверху и снизу блока -->
-      <div class="container py-5">
-        <h1> Записи сообщества {{ group.title }} </h1>
-        <p>
-          {{ group.description }}
-        </p>
+  <div class="container py-5">
+    <h1> Записи сообщества {{ group.title }} </h1>
+      <p>
+       {{ group.description }}
+      </p>
         <article>
-        {% for post in posts %}
+          {% for post in posts %}
           <ul>
             <li>
-              Автор: {{ post.author.get_full_name }}
+            Автор: {{ post.author.get_full_name }}
             </li>
-            <li>
-              Дата публикации: {{ post.pub_date|date:"d E Y" }}
-            </li>
-          </ul>      
+              <li>
+               Дата публикации: {{ post.pub_date|date:"d E Y" }}
+              </li>
+            </ul>      
           <p>
-            {{ post.text }}
+          {{ post.text }}
           </p>
           {% if not forloop.last %}<hr>{% endif %}
-        {% endfor %}
+          {% endfor %}
         </article>
-      </div>
+  </div>
 {% endblock %}
